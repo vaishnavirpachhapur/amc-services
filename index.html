@@ -516,7 +516,7 @@
       background: radial-gradient(circle at top, #0f2027, #08131c 60%);
       text-align: center;
       position: relative;
-      /* width: 100%; */
+
       overflow: hidden;
     }
 
@@ -536,8 +536,8 @@
 
     .globe-wrapper {
       position: relative;
-      /* width: 100%; */
-      height: clamp(100px, 35vh, 350px);
+   
+      height: clamp(200px, 35vh, 350px);
       margin: 0 auto clamp(20px, 3vw, 40px);
       overflow: visible;
       display: flex;
@@ -546,11 +546,11 @@
       max-width: 800px;
     }
 
-    /* .globe-wrapper canvas {
+    .globe-wrapper canvas {
       position: relative !important;
       width: 100%;
       height: 100%;
-    } */
+    }
 
     .country-controls {
       position: relative;
@@ -1427,49 +1427,7 @@
     }
 
     /* Globe Section */
-    .globe-section {
-      padding: clamp(50px, 10vw, 100px) clamp(15px, 5vw, 80px);
-    }
-
-    .globe-section h2 {
-      font-size: clamp(1.4rem, 4.5vw, 2.8rem);
-      margin-bottom: clamp(40px, 6vw, 60px);
-      color: #ffffff;
-      line-height: 1.4;
-    }
-
-    .globe-wrapper {
-      width: 100%;
-      max-width: 100%;
-      height: clamp(200px, 35vh, 350px);
-      margin-bottom: clamp(20px, 3vw, 40px);
-    }
-
-    .country-controls {
-      position: relative;
-      flex-direction: row;
-      justify-content: center;
-      left: auto;
-      top: auto;
-      transform: none;
-      margin-top: clamp(20px, 3vw, 30px);
-      gap: clamp(10px, 2vw, 18px);
-      flex-wrap: wrap;
-    }
-
-    .country-btn {
-      padding: clamp(10px, 1.5vw, 14px) clamp(16px, 2.5vw, 28px);
-      font-size: clamp(11px, 1.8vw, 14px);
-      border-radius: clamp(30px, 5vw, 50px);
-    }
-
-    .location-tooltip {
-      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
-      padding: clamp(10px, 1.5vw, 14px);
-      max-width: clamp(200px, 80vw, 300px);
-      border-radius: clamp(8px, 1.5vw, 12px);
-    }
-
+   
     /* Process Section */
     .process-section {
       padding: clamp(40px, 8vw, 100px) clamp(15px, 5vw, 80px);
@@ -1781,11 +1739,11 @@
         height: clamp(180px, 50vw, 280px);
         margin: 0 auto clamp(15px, 2vw, 25px);
       }
-/* 
+
       .globe-wrapper canvas {
         width: 100%;
         height: 100%;
-      } */
+      } 
 
       .country-controls {
         flex-direction: row;

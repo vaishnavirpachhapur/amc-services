@@ -517,7 +517,7 @@
       text-align: center;
       position: relative;
       width: 100%;
-      overflow: visible;
+      overflow: hidden;
     }
 
     .globe-section h2 {
@@ -535,17 +535,14 @@
 
     .globe-wrapper {
       position: relative;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
+      width: 100%;
       height: clamp(200px, 35vh, 350px);
-      margin-bottom: clamp(20px, 3vw, 40px);
+      margin: 0 auto clamp(20px, 3vw, 40px);
       overflow: visible;
       display: flex;
       align-items: center;
       justify-content: center;
       max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .globe-wrapper canvas {
@@ -1665,6 +1662,23 @@
         grid-template-columns: 1fr;
       }
 
+      /* Globe Tablet */
+      .globe-section {
+        padding: 40px 5%;
+      }
+
+      .globe-wrapper {
+        width: 100%;
+        height: clamp(200px, 40vh, 300px);
+        margin: 0 auto clamp(20px, 3vw, 30px);
+        max-width: 100%;
+      }
+
+      .country-controls {
+        gap: clamp(10px, 2vw, 15px);
+        margin-top: clamp(15px, 3vw, 25px);
+      }
+
       /* Process Section Responsive */
       .timeline-container {
         height: clamp(120px, 40vw, 280px);
@@ -1743,6 +1757,33 @@
       .content-box:nth-child(4) {
         top: -120px;
         left: 72%;
+      }
+
+      /* Globe Mobile */
+      .globe-section {
+        padding: 40px 5%;
+      }
+
+      .globe-wrapper {
+        width: 100%;
+        height: clamp(180px, 50vw, 280px);
+        margin: 0 auto clamp(15px, 2vw, 25px);
+      }
+
+      .globe-wrapper canvas {
+        width: 100%;
+        height: 100%;
+      }
+
+      .country-controls {
+        flex-direction: row;
+        gap: clamp(8px, 2vw, 12px);
+        margin-top: clamp(15px, 2vw, 20px);
+      }
+
+      .country-btn {
+        padding: clamp(8px, 1vw, 11px) clamp(12px, 2vw, 18px);
+        font-size: clamp(10px, 1.5vw, 12px);
       }
     }
   </style>
@@ -1927,7 +1968,7 @@
   <script src="https://unpkg.com/globe.gl"></script>
 
   <section class="globe-section">
-    <h2>One Partner. Three Major Markets.</h2>
+    <h2>One Partner. Three Major Markets.<br><br><br><br><br><br></h2>
 
     <div id="globeContainer" class="globe-wrapper"></div>
 

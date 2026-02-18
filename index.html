@@ -566,139 +566,117 @@ textarea {
 
     /* ========== GLOBE SECTION ========== */
     .globe-section {
-      padding: clamp(100px, 10vw, 100px) 1%;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-      background: radial-gradient(circle at top, #0f2027, #08131c 60%);
-      text-align: center;
-      position: relative;
+.globe-section h2 {
+  color: #fff;
+  font-size: clamp(22px, 4vw, 40px);
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-      overflow: hidden;
-    }
+.globe-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  height: clamp(420px, 75vh, 750px);
+  margin: 0 auto;
+  position: relative;
+}
 
-    .globe-section h2 {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      color: #ffffff;
-      margin-bottom: clamp(40px, 6vw, 60px);
-      line-height: 1.4;
-    }
 
-    .globe-section .subtitle {
-      font-size: clamp(0.9rem, 2vw, 1.1rem);
-      color: #b0b0b0;
-      margin-bottom: 30px;
-      font-weight: 300;
-    }
+.globe-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
 
-    .globe-wrapper {
-      position: relative;
+/* ===== Tooltip on Globe ===== */
+.location-tooltip {
+  background: rgba(0, 20, 40, 0.95);
+  border: 1px solid #0072ff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: white;
+  font-size: 10px;
+  max-width: 220px;
+  line-height: 1.4;
+  
+  pointer-events: none;
+}
 
-      height: clamp(200px, 35vh, 350px);
-      margin: 0 auto clamp(20px, 3vw, 40px);
-      overflow: visible;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 800px;
-    }
 
-    .globe-wrapper canvas {
-      position: relative !important;
-      width: 100%;
-      height: 100%;
-    }
 
-    .country-controls {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: clamp(10px, 2vw, 20px);
-      z-index: 20;
-      margin-top: clamp(20px, 3vw, 30px);
-      align-items: center;
-    }
+/* ===== Bottom Blue Buttons ===== */
+.country-controls {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
-    .country-btn {
-      position: relative;
-      padding: clamp(10px, 1.5vw, 14px) clamp(16px, 2.5vw, 28px);
-      border-radius: clamp(30px, 5vw, 50px);
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: clamp(11px, 1.8vw, 14px);
-      letter-spacing: 0.5px;
-      color: white;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      transition: all 0.4s ease;
-      overflow: hidden;
-    }
+.country-btn {
+  background: #0072ff;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
 
-    .country-btn::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-      transform: skewX(-20deg);
-      transition: 0.6s;
-    }
+.country-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,114,255,0.4);
+}
 
-    .country-btn:hover::before {
-      left: 120%;
-    }
+.country-btn.active {
+  background: #0056d6;
+}
 
-    .country-btn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(45deg, #00c6ff, #0072ff);
-      box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
-    }
+.flag {
+  font-size: 18px;
+}
 
-    .country-btn.active {
-      background: linear-gradient(45deg, #ff9800, #ffc107);
-      box-shadow: 0 0 25px rgba(255, 193, 7, 0.7);
-      transform: scale(1.08);
-    }
+@media (max-width: 600px) {
+  .country-btn {
+    width: 80%;
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .globe-wrapper {
+    height: 50vh;
+  }
+}
 
-    .country-btn {
-      opacity: 0;
-      animation: slideInBtn 0.8s forwards;
-    }
+@media (max-width: 480px) {
+  .country-controls {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .country-btn:nth-child(1) {
-      animation-delay: 0.2s;
-    }
+  .country-btn {
+    width: 90%;
+  }
 
-    .country-btn:nth-child(2) {
-      animation-delay: 0.4s;
-    }
-
-    .country-btn:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-
-    @keyframes slideInBtn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    .location-tooltip {
-      background: rgba(15, 32, 39, 0.95);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(0, 198, 255, 0.4);
-      border-radius: 10px;
-      padding: 12px 14px;
-      color: white;
-      font-size: clamp(0.8rem, 1.5vw, 0.95rem);
-      line-height: 1.6;
-      white-space: normal;
-      max-width: 280px;
-      box-shadow: 0 6px 24px rgba(0, 198, 255, 0.15);
-    }
+  .globe-wrapper {
+    height: 45vh;
+  }
+}
 
     /* ========== PROCESS SECTION ========== */
     .node-icon {
@@ -1868,31 +1846,32 @@ textarea {
       <h2>Free Support Audit</h2>
       <p>Tell us about your Dynamics environment and we'll assess optimization opportunities.</p>
 
-      <form>
-        <div class="form-group">
-          <input type="text" placeholder="Full Name" required>
-        </div>
-        <div class="form-group">
-          <input type="text" placeholder="Company Name" required>
-        </div>
-        <div class="form-group">
-          <input type="email" placeholder="Email Address" required>
-        </div>
-        <div class="form-group">
-          <select required>
-            <option value="">Select Dynamics Product</option>
-            <option>Business Central</option>
-            <option>Finance & Operations</option>
-            <option>Customer Engagement</option>
-            <option>Power Platform</option>
-            <option>Multiple</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <textarea rows="4" placeholder="Describe your current challenges"></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Request Audit</button>
-      </form>
+<form id="auditForm">
+  <div class="form-group">
+    <input type="text" id="fullName" placeholder="Full Name" required>
+  </div>
+  <div class="form-group">
+    <input type="text" id="companyName" placeholder="Company Name" required>
+  </div>
+  <div class="form-group">
+    <input type="email" id="email" placeholder="Email Address" required>
+  </div>
+  <div class="form-group">
+    <select id="product" required>
+      <option value="Business Central">Business Central</option>
+<option value="Finance & Operations">Finance & Operations</option>
+<option value="Customer Engagement">Customer Engagement</option>
+<option value="Power Platform">Power Platform</option>
+<option value="Multiple">Multiple</option>
+
+    </select>
+  </div>
+  <div class="form-group">
+    <textarea id="challenges" rows="4" placeholder="Describe your current challenges"></textarea>
+  </div>
+  <button type="submit" class="submit-btn">Request Audit</button>
+</form>
+
     </div>
   </div>
 
@@ -2098,25 +2077,26 @@ textarea {
   <!-- GLOBE SECTION -->
   <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
   <script src="https://unpkg.com/globe.gl"></script>
-  
 
 
+<section class="globe-section">
+  <h2>One Partner. Three Major Markets</h2>
+  <div id="globeContainer" class="globe-wrapper"></div>
 
-  <section>
-    <h2 style="text-align: center; font-size: 40px;">One Partner. Three Major Markets</h2>
-    <section class="globe-section">
-      <br>
+  <div class="country-controls">
+    <button class="country-btn active" data-country="india">
+      <span class="flag">🇮🇳</span> India
+    </button>
 
-      <div id="globeContainer" class="globe-wrapper"></div>
+    <button class="country-btn" data-country="usa">
+      <span class="flag">🇺🇸</span> USA
+    </button>
 
-
-      <div class="country-controls">
-        <button class="country-btn" data-country="india">🇮🇳 India</button>
-        <button class="country-btn" data-country="usa">🇺🇸 USA</button>
-        <button class="country-btn" data-country="uae">🇦🇪 UAE</button>
-      </div>
-    </section>
-  </section>
+    <button class="country-btn" data-country="uae">
+      <span class="flag">🇦🇪</span> UAE
+    </button>
+  </div>
+</section>
 
   <!-- PROCESS SECTION -->
   <section class="process-section">
@@ -2480,6 +2460,76 @@ textarea {
       }
     });
 
+    document.getElementById("auditForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const fullName = document.getElementById("fullName").value.trim();
+  const companyName = document.getElementById("companyName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const dynamicsProduct = document.getElementById("product").value;
+  const challenges = document.getElementById("challenges").value.trim();
+
+  /* ===== Frontend Validation (matches schema) ===== */
+
+  if (fullName.length < 2 || fullName.length > 100) {
+    alert("Full Name must be between 2 and 100 characters.");
+    return;
+  }
+
+  if (companyName.length < 2 || companyName.length > 150) {
+    alert("Company Name must be between 2 and 150 characters.");
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  if (!dynamicsProduct) {
+    alert("Please select a Dynamics Product.");
+    return;
+  }
+
+  if (challenges.length < 10 || challenges.length > 2000) {
+    alert("Challenges must be between 10 and 2000 characters.");
+    return;
+  }
+
+  const payload = {
+    fullName: fullName,
+    companyName: companyName,
+    email: email,
+    dynamicsProduct: dynamicsProduct,
+    challenges: challenges
+  };
+
+  try {
+    const response = await fetch("https://26e9bec3ada7e5bc9c266f9f2baf13.dc.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c73c8c770a8d40dda2473deb2865a5e4/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=J_uNxv5cnrSQwH3jQ7DqXhzXkvUziTI4sQGchTHcPMo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.status === 200 || response.status === 202) {
+      alert("Audit request submitted successfully!");
+      document.getElementById("auditForm").reset();
+      closeAuditModal();
+    } else {
+      const errorText = await response.text();
+      console.error("Flow Error:", errorText);
+      alert("Submission failed. Please try again.");
+    }
+
+  } catch (error) {
+    console.error("Network Error:", error);
+    alert("Network error. Please try again.");
+  }
+});
+
     /* ========== HERO STRIPE SCROLL ========== */
     window.addEventListener("scroll", function () {
       const stripe = document.querySelector(".hero-stripe");
@@ -2515,106 +2565,119 @@ textarea {
 
     /* ========== GLOBE SECTION ========== */
     document.addEventListener("DOMContentLoaded", function () {
-      const globeContainer = document.getElementById('globeContainer');
 
-      const globe = Globe()(globeContainer)
-        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-        .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-        .backgroundColor('#08131c')
-        .pointsData([])
-        .pointAltitude(0.02)
-        .pointRadius(0.6)
-        .pointColor(() => '#ff4d4d');
+const globeContainer = document.getElementById('globeContainer');
 
-      globe.controls().autoRotate = true;
-      globe.controls().autoRotateSpeed = 0.5;
+const globe = Globe()(globeContainer)
+  .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+  .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+  .backgroundColor('rgba(0,0,0,0)')
+  .pointAltitude(0.02)
+  .pointRadius(0.6)
+  .pointColor(() => '#ff4d4d');
 
-      const controls = globe.controls();
-      controls.enableZoom = false;
-      controls.enablePan = false;
-      controls.minDistance = 300;
-      controls.maxDistance = 300;
+/* ✅ RESPONSIVE FIX */
+function resizeGlobe() {
+  const width = globeContainer.clientWidth;
+  const height = globeContainer.clientHeight;
+  globe.width(width);
+  globe.height(height);
+}
 
-      const countries = {
-        india: {
-          lat: 12.9629,
-          lng: 77.5775,
-          flag: '🇮🇳',
-          name: 'India'
-        },
-        usa: {
-          lat: 40.7128,
-          lng: -74.0060,
-          flag: '🇺🇸',
-          name: 'USA'
-        },
-        uae: {
-          lat: 25.2048,
-          lng: 55.2708,
-          flag: '🇦🇪',
-          name: 'UAE'
-        }
-      };
+resizeGlobe();
+window.addEventListener('resize', resizeGlobe);
 
-      const descriptions = {
-        india: "Deep expertise in GST compliance, cost-optimized support models, rapid customizations, and e-invoicing.",
-        usa: "High-scale cloud performance, security patching, Microsoft 365 synergy, and SOC-2 readiness.",
-        uae: "VAT-compliant financial structures, localized supply chain optimizations, and Free Zone accounting."
-      };
 
-      document.querySelectorAll('.country-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-          const key = this.dataset.country;
-          const data = countries[key];
+    
 
-          document.querySelectorAll('.country-btn')
-            .forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
+  const controls = globe.controls();
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.6;
+  controls.enableZoom = false;
+  controls.enablePan = false;
+  controls.minDistance = 300;
+  controls.maxDistance = 300;
 
-          globe.controls().autoRotate = false;
+  const countries = {
+    india: {
+      lat: 20.5937,
+      lng: 78.9629,
+      name: "India",
+      description: "Deep expertise in GST compliance, cost-optimized delivery models, and rapid ERP customization."
+    },
+    usa: {
+      lat: 37.0902,
+      lng: -95.7129,
+      name: "USA",
+      description: "High-scale cloud architecture, Microsoft ecosystem integration, and enterprise-grade security."
+    },
+    uae: {
+      lat: 23.4241,
+      lng: 53.8478,
+      name: "UAE",
+      description: "VAT-compliant finance structures, Free Zone accounting, and localized supply chain optimization."
+    }
+  };
+  
 
-          globe.pointOfView(
-            { lat: data.lat, lng: data.lng, altitude: 1.6 },
-            1800
-          );
+  function showCountry(key) {
 
-          globe.pointsData([{ lat: data.lat, lng: data.lng }]);
+    const data = countries[key];
 
-          globe.htmlElementsData([]);
+    controls.autoRotate = false;
 
-          globe.htmlElementsData([{
-            lat: data.lat,
-            lng: data.lng,
-            description: descriptions[key],
-            name: data.name
-          }])
-            .htmlLat(d => d.lat)
-            .htmlLng(d => d.lng)
-            .htmlAltitude(() => 0.03)
-            .htmlElement(d => {
-              const wrapper = document.createElement("div");
+    globe.pointOfView(
+      { lat: data.lat, lng: data.lng, altitude: 1.2 },
+      1500
+    );
 
-              wrapper.style.transform = "translate(12px,-8px)";
-              wrapper.style.display = "flex";
-              wrapper.style.alignItems = "flex-start";
-              wrapper.style.gap = "8px";
-              wrapper.style.whiteSpace = "nowrap";
+    globe
+  .pointsData([{
+    lat: data.lat,
+    lng: data.lng,
+    size: 1
+  }])
+  .pointAltitude(0.12)
+  .pointRadius(1.2)
+  .pointColor(() => '#ff0000');
 
-              wrapper.innerHTML = `
-    <span style="font-size:20px; flex-shrink:0; margin-top:2px;">📍</span>
-    <div class="location-tooltip">
-        <strong style="color: #00c6ff;">${d.name}</strong><br>
-        <div style="text-align: justify;">
-            ${d.description}
-        </div>
-    </div>
-`;
 
-              return wrapper;
-            });
-        });
-      });
+    globe.htmlElementsData([{
+      lat: data.lat,
+      lng: data.lng,
+      name: data.name,
+      description: data.description
+    }])
+    .htmlLat(d => d.lat)
+    .htmlLng(d => d.lng)
+    .htmlAltitude(() => 0.05)
+    .htmlElement(d => {
+      const el = document.createElement("div");
+      el.className = "location-tooltip";
+      el.innerHTML = `
+        <strong style="color:#00c6ff">${d.name}</strong><br/>
+        ${d.description}
+      `;
+      return el;
     });
+  }
+
+  document.querySelectorAll('.country-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+
+      document.querySelectorAll('.country-btn')
+        .forEach(b => b.classList.remove('active'));
+
+      this.classList.add('active');
+
+      showCountry(this.dataset.country);
+    });
+  });
+
+  // Load India initially
+  showCountry("india");
+
+});
 
     /* ========== PROCESS ANIMATION ========== */
     document.addEventListener('DOMContentLoaded', function () {
